@@ -4,9 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class DetailTransaction extends Model
 {
     //
+    protected $fillable = [
+        "transaction_id",
+        "product",
+        "quantity"
+    ];
+
     public $timestamps = false;
 
     public function Product(){

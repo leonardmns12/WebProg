@@ -20,6 +20,7 @@
             @csrf
             <p style="text-align:center">Quantity : </p>
             <input type="number" name="quantity"/>
+            <input style="visibility:hidden;" type="text" name="product" value="{{$Product->id}}"/>
             </div>
             <Button class="btn btn-success">Add to cart</Button>
             </form>

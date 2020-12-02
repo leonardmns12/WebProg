@@ -60,9 +60,9 @@
                             </a>
                             </li>
                             <li class="nav-item">
-                            <button type="button" class="btn btn-success">
+                            <a href="{{route('history')}}" type="button" class="btn btn-success">
                                 History
-                            </button>
+                            </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

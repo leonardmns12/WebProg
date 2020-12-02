@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function cart(Request $req) {
         $Product = new Cart;
         $Product->user = Auth::id();
-        $Product->product = 1;
+        $Product->product = $req->product;
         $Product->quantity = $req->quantity;
         $Product->save();
         $p = Product::paginate(3);

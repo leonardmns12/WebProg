@@ -32,11 +32,12 @@ class HomeController extends Controller
         return view('home' , ["Product" => $Product, "Cart" => $Cart]);
     }
     public function find(Request $req) {
+        $Cart = Cart::where('user' , Auth::id())->get();
         $name = $req->name;
         $Product = DB::table('products')->where('name' , 'like' , '%'.$name.'%')
         ->paginate();
 
-        return view('home' , ["Product" => $Product]);
+        return view('home' , ["Product" => $Product, "Cart" => $Cart]);
     }
     public function detail($id) {
         $Product = Product::find($id);

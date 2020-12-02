@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controller\LoginController;
 use App\Http\Controller\ProductController;
+use App\Http\Controller\TransactionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +26,12 @@ Route::post('/product/cart', 'ProductController@cart')->name('cart');
 
 //Cart
 Route::get('/cart', 'CartController@index')->name('cart1');
+Route::get('/cart/delete/{id}' , 'CartController@deleteCart')->name('deletecart');
+Route::get('/cart/checkout' , 'CartController@checkout')->name('cartcheckout');
+
+//Transaction
+Route::get('/transaction' , 'TransactionController@index')->name('history');
+
+
+//DetailTransaction
+Route::get('/transaction/detail/{id}', 'TransactionController@detail')->name('detailtransaction');
