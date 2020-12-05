@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controller\LoginController;
 use App\Http\Controller\ProductController;
 use App\Http\Controller\TransactionController;
+use App\Http\Controller\adminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +36,6 @@ Route::get('/transaction' , 'TransactionController@index')->name('history');
 
 //DetailTransaction
 Route::get('/transaction/detail/{id}', 'TransactionController@detail')->name('detailtransaction');
+
+//Admin Panel
+Route::get('/adminPanel', 'adminController@index');
