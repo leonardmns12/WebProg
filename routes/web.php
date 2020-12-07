@@ -37,5 +37,7 @@ Route::get('/transaction' , 'TransactionController@index')->name('history');
 //DetailTransaction
 Route::get('/transaction/detail/{id}', 'TransactionController@detail')->name('detailtransaction');
 
-//Admin Panel
+//Admin pages
 Route::get('/adminPanel', 'adminController@index');
+Route::get('/addProduct', 'adminController@addProduct');
+Route::get('/listProductPage', 'adminController@listProductPage');

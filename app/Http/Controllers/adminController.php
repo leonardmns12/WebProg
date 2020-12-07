@@ -10,4 +10,12 @@ class adminController extends Controller
         return view('adminPanel');
 
     }
+
+    public function addProduct(){
+        return view('addProduct');
+    }
+
+    public function listProductPage(){
+        return view('listProductPage');
+    }
 }

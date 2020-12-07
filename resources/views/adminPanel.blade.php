@@ -1,5 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.adminBar')
 
 @section('content')
-    Hello World
+    <div id="adminText" class="d-flex justify-content-center ">
+        <h1>Admin</h1>
+    </div>
 @endsection
