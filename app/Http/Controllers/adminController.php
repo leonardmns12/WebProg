@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\Category;
+use Illuminate\Support\Facades\DB;
 
 class adminController extends Controller
 {
@@ -16,7 +19,10 @@ class adminController extends Controller
     }
 
     public function listProductPage(){
-        return view('listProduct');
+        
+        $Product = Product::all();
+
+        return view('listProduct', ['Product' => $Product]);
     }
 
     public function addCategoryPage(){
@@ -24,6 +30,10 @@ class adminController extends Controller
     }
 
     public function listCategoryPage(){
-        return view('listCategory');
+
+        $Product = Product::all();
+        $Category = Category::all();
+
+        return view('listCategory', ['Product' => $Product], ['Category' => $Category]);
     }
 }
