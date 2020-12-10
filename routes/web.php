@@ -39,7 +39,12 @@ Route::get('/transaction/detail/{id}', 'TransactionController@detail')->name('de
 
 //Admin pages
 Route::get('/adminPanel', 'adminController@index');
-Route::get('/addProduct', 'adminController@addProduct');
+Route::get('/addProduct', 'adminController@addProductPage');
 Route::get('/listProduct', 'adminController@listProductPage');
 Route::get('/addCategory', 'adminController@addCategoryPage');
 Route::get('/listCategory', 'adminController@listCategoryPage');
+
+Route::post('/addCategory', 'adminController@addCategory');
+Route::post('/addProduct', 'adminController@addProduct');
+
+Route::get('/deleteproduct/{id}', 'adminController@deleteProduct')->name('deleteproduct');

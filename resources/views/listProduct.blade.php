@@ -22,10 +22,10 @@
                         <td>{{$product->id}}</td> <!--Product Id-->
                         <td><img src="{{asset($product->image)}}" alt=""></td> <!--Image-->
                         <td>{{$product->name}}</td> <!--Product Name-->
-                        <td>{{$product->category}}</td> <!--Product Category--> <!--To Do: Fix how to display name-->
+                        <td>{{$product->Category->name}}</td> <!--Product Category--> <!--To Do: Fix how to display name-->
                         <td>Rp.{{$product->price}}</td> <!--Product Price-->
                         <td>{{$product->description}}</td> <!--Product Description-->
-                        <td><button class="w-75 border-0 bg-danger text-white">Delete</button></td>
+                        <td><a class="w-75 border-0 bg-danger text-white" href="{{route('deleteproduct', $product->id)}}">Delete</a></td>
                     </tr>
                     @endforeach
                 </tbody>
