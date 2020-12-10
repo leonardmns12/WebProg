@@ -16,6 +16,14 @@ class adminController extends Controller
     }
 
     public function listProductPage(){
-        return view('listProductPage');
+        return view('listProduct');
+    }
+
+    public function addCategoryPage(){
+        return view('addCategory');
+    }
+
+    public function listCategoryPage(){
+        return view('listCategory');
     }
 }

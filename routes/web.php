@@ -40,4 +40,6 @@ Route::get('/transaction/detail/{id}', 'TransactionController@detail')->name('de
 //Admin pages
 Route::get('/adminPanel', 'adminController@index');
 Route::get('/addProduct', 'adminController@addProduct');
-Route::get('/listProductPage', 'adminController@listProductPage');
+Route::get('/listProduct', 'adminController@listProductPage');
+Route::get('/addCategory', 'adminController@addCategoryPage');
+Route::get('/listCategory', 'adminController@listCategoryPage');
