@@ -4,9 +4,9 @@
     <div>
         <div id="Categories">
             <h1 class="d-flex justify-content-center">Category</h1>
-            <div class="m-auto border w-75 p-2"><h4 class="d-flex justify-content-center">Phone</h4></div>
-            <div class="m-auto border w-75 p-2"><h4 class="d-flex justify-content-center">Laptop</h4></div>
-            <div class="m-auto border w-75 p-2"><h4 class="d-flex justify-content-center">TV</h4></div>
+            @foreach($Category as $category)
+            <div class="m-auto border w-75 p-2"><h4 class="d-flex justify-content-center">{{$category->name}}</h4></div>
+            @endforeach
         </div>
         
         <div id="Products" class="mt-4">
@@ -24,22 +24,16 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($Product as $product)
                         <tr>
-                            <th>Test Id 1</th>
-                            <th>Test Image 1</th>
-                            <th>Test Name 1</th>
-                            <th>Test Category 1</th>
-                            <th>Test Price 1</th>
-                            <th>Test Description 1</th>
+                            <td>{{$product->id}}</td> <!--Product Id-->
+                            <td><img src="{{asset($product->image)}}" alt=""></td> <!--Image-->
+                            <td>{{$product->name}}</td> <!--Product Name-->
+                            <td>{{$product->category}}</td> <!--Product Category--> <!--To Do: Fix how to display name-->
+                            <td>Rp.{{$product->price}}</td> <!--Product Price-->
+                            <td>{{$product->description}}</td> <!--Product Description-->
                         </tr>
-                        <tr>
-                            <th>Test Id 2</th>
-                            <th>Test Image 2</th>
-                            <th>Test Name 2</th>
-                            <th>Test Category 2</th>
-                            <th>Test Price 2</th>
-                            <th>Test Description 2</th>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
