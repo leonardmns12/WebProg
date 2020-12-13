@@ -34,8 +34,16 @@ class adminController extends Controller
 
     public function listCategoryPage(){
 
-        $Product = Product::all();
+        $Product = null;
         $Category = Category::all();
+
+        return view('listCategory', ['Product' => $Product], ['Category' => $Category]);
+    }
+
+    public function listCategoryPageWithProducts($id){
+
+        $Category = Category::all();
+        $Product = Product::where('category', $id)->get();
 
         return view('listCategory', ['Product' => $Product], ['Category' => $Category]);
     }
@@ -61,7 +69,7 @@ class adminController extends Controller
             'name' => 'required',
             'category' => 'required',
             'description' => 'required',
-            'price' => 'required|min:100',
+            'price' => 'required|numeric|min:100', //For some reason this causes the validation process to be false and data to not be inserted
             'image' => 'required|max:10000'
 
         ]);
