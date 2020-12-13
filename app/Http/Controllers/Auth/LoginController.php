@@ -31,7 +31,7 @@ class LoginController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     public function authenticated(Request $request)
     {
-        if(Auth::user()->name == "admin")
+        if(Auth::user()->roleId == 2)
         {
             return redirect('/adminPanel');
         } 

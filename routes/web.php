@@ -20,31 +20,41 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/find' , 'HomeController@find');
-Route::get('/detail/{id}' , 'HomeController@detail')->name('detail');
-
-//Product
-Route::post('/product/cart', 'ProductController@cart')->name('cart');
-
-//Cart
-Route::get('/cart', 'CartController@index')->name('cart1');
-Route::get('/cart/delete/{id}' , 'CartController@deleteCart')->name('deletecart');
-Route::get('/cart/checkout' , 'CartController@checkout')->name('cartcheckout');
-
-//Transaction
-Route::get('/transaction' , 'TransactionController@index')->name('history');
 
 
-//DetailTransaction
-Route::get('/transaction/detail/{id}', 'TransactionController@detail')->name('detailtransaction');
+Route::group(['middleware'=>'Member'],function(){
+    Route::get('/detail/{id}' , 'HomeController@detail')->name('detail');
 
-//Admin pages
-Route::get('/adminPanel', 'adminController@index');
-Route::get('/addProduct', 'adminController@addProductPage');
-Route::get('/listProduct', 'adminController@listProductPage');
-Route::get('/addCategory', 'adminController@addCategoryPage');
-Route::get('/listCategory', 'adminController@listCategoryPage');
+    //Product
+    Route::post('/product/cart', 'ProductController@cart')->name('cart');
 
-Route::post('/addCategory', 'adminController@addCategory');
-Route::post('/addProduct', 'adminController@addProduct');
+    //Cart
+    Route::get('/cart', 'CartController@index')->name('cart1');
+    Route::get('/cart/delete/{id}' , 'CartController@deleteCart')->name('deletecart');
+    Route::get('/cart/checkout' , 'CartController@checkout')->name('cartcheckout');
 
-Route::get('/deleteproduct/{id}', 'adminController@deleteProduct')->name('deleteproduct');
+    //Transaction
+    Route::get('/transaction' , 'TransactionController@index')->name('history');
+
+
+    //DetailTransaction
+    Route::get('/transaction/detail/{id}', 'TransactionController@detail')->name('detailtransaction');
+});
+
+
+Route::group(['middleware'=>'Admin'],function(){
+    //Admin pages
+    Route::get('/adminPanel', 'adminController@index');
+    Route::get('/addProduct', 'adminController@addProductPage');
+    Route::get('/listProduct', 'adminController@listProductPage');
+    Route::get('/addCategory', 'adminController@addCategoryPage');
+    Route::get('/listCategory', 'adminController@listCategoryPage');
+
+    Route::post('/addCategory', 'adminController@addCategory');
+    Route::post('/addProduct', 'adminController@addProduct');
+
+    Route::get('/deleteproduct/{id}', 'adminController@deleteProduct')->name('deleteproduct');
+
+    Route::get('/listCategory/{id}', 'adminController@listCategoryPageWithProducts')->name('categoryWithProductList');
+
+});
