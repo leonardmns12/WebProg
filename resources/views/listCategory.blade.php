@@ -29,7 +29,7 @@
                         @foreach($Product as $product)
                         <tr>
                             <td><p>{{$product->id}}</p></td> <!--Product Id-->
-                            <td><img src="{{asset($product->image)}}" alt=""></td> <!--Image-->
+                            <td><img src="{{asset('storage/'.$product->image)}}" width="100px" height="100px" alt=""></td> <!--Image-->
                             <td><p>{{$product->name}}</p></td> <!--Product Name-->
                             <td><p>{{$product->category}}</p></td> <!--Product Category--> <!--To Do: Fix how to display name-->
                             <td><p>Rp.{{$product->price}}</p></td> <!--Product Price-->

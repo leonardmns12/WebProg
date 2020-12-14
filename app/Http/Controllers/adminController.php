@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class adminController extends Controller
 {
@@ -64,33 +66,36 @@ class adminController extends Controller
     }
 
     public function addProduct(Request $request){
-
         $this->validate($request, [ //TODO: Complete the validation process
             'name' => 'required',
             'category' => 'required',
             'description' => 'required',
-            'price' => 'required|numeric|min:100', //For some reason this causes the validation process to be false and data to not be inserted
-            'image' => 'required|max:10000'
+            'price' => 'required|numeric|min:100',
+            'image' => 'required|file|max:10000'
 
         ]);
-
+        $storage = storage_path('images');
+        $fileName = $request->file('image')->getClientOriginalName();
+        if(!File::isDirectory($storage)){
+        File::makeDirectory($storage, 0777, true, true);
+        }
+        Storage::putFileAs('images', $request->file('image'), $fileName);
         $product = new Product;
-
         $product->name = $request->name;
         $product->category = $request->category;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->image = $request->image;
-
+        $product->image = 'images/' .$fileName;
         $product->save();
 
         return redirect()->back();
-
     }
 
     public function deleteProduct($id){
 
         $Product = Product::find($id);
+
+        Storage::delete($Product->image);
         $Product->delete();
 
         $Product = Product::all();

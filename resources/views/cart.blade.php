@@ -6,7 +6,7 @@
         @foreach($Cart as $cart)    
         <div class="d-flex container-cart">
             <div class="p-2">
-            <img alt="cart-image" style="height:150px; width:200px" src="{{asset($cart->Product->image)}}"/>
+            <img alt="cart-image" style="height:150px; width:200px" src="{{asset('storage/'.$cart->Product->image)}}"/>
             </div>
             <div class="p-2">
                 <p style="font-weight: bold;">{{$cart->Product->name}}</p>

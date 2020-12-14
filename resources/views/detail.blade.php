@@ -3,7 +3,7 @@
 @section('content')
     <div class="container d-flex">
         <div class="p-2">
-            <img class="img-preview" src="{{asset($Product->image)}}" alt="Card image cap">
+            <img class="img-preview" src="{{asset('storage/'.$Product->image)}}" alt="Card image cap">
         </div>
         <div class="p-2" style="background-color:#ECECED;">
             <div style="padding:50px">

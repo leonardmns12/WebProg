@@ -5,7 +5,7 @@
     <div class="d-flex flex-row">
             @foreach($Product as $product)
             <div class="card" style="width: 18rem; padding:20px; margin-left:50px">
-                <img class="card-img-top" src="{{asset($product->image)}}" alt="Card image cap">
+                <img class="card-img-top" src="{{asset('storage/'.$product->image)}}" alt="Card image cap">
                 <div class="d-flex justify-content-center flex-column">
                 <h2 class="text-primary">{{$product->name}}</h2>
                 <p class="card-text">IDR.{{$product->price}}</p>
